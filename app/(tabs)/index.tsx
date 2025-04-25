@@ -1,6 +1,6 @@
 import { Text, View, StyleSheet } from "react-native";
 import { Link } from "expo-router";
-import { Image } from "expo-image";
+import { Image } from "expo-image"; // npx expo install expo-image
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
