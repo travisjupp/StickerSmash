@@ -18,7 +18,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#25292e',
     alignItems: 'center',
-    // justifyContent: 'center',
   },
   imageContainer: {
     flex: 1,
@@ -28,12 +27,4 @@ const styles = StyleSheet.create({
     height: 440,
     borderRadius: 18,
   },
-  // text: {
-  //   color: '#fff',
-  // },
-  // button: {
-  //   fontSize: 20,
-  //   textDecorationLine: 'underline',
-  //   color: '#fff',
-  // },
 });
