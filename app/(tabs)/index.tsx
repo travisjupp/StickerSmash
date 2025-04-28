@@ -1,14 +1,18 @@
 import { View, StyleSheet } from "react-native";
-import ImageViewer from "@/components/ImageViewer";
-import Button from "@/components/Button";
 import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
+
+import Button from "@/components/Button";
+import ImageViewer from "@/components/ImageViewer";
 
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
 export default function Index() {
   // STORE IMAGE URI IN STATE
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
+  // SHOW OR HIDE BUTTONS FOR MODAL
+  const [showAppOptions, setShowAppOptions] = useState<boolean>(false);
+
   // LAUNCH DEVICES IMG LIBRARY FUNC
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -16,11 +20,13 @@ export default function Index() {
       mediaTypes: ['images'],
       allowsEditing: true,
       quality: 1,
-      });
+    });
 
     if (!result.canceled) {
       // SAVE IMG URI
       setSelectedImage(result.assets[0].uri);
+      // SHOW APP OPTIONS
+      setShowAppOptions(true);
     } else {
       alert('You did not select any image.');
     }
@@ -32,10 +38,14 @@ export default function Index() {
         {/* PASS SELECTED IMG TO VIEWER */}
         <ImageViewer imgSource={PlaceholderImage} selectedImage={selectedImage} />
       </View>
-      <View style={styles.footerContainer}>
-        <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
-        <Button label="Use this photo" />
-      </View>
+      {showAppOptions ? (
+        <View />
+      ) : (
+          <View style={styles.footerContainer}>
+            <Button theme="primary" label="Choose a photo" onPress={pickImageAsync} />
+            <Button label="Use this photo" />
+          </View>
+        )}
     </View>
   );
 }
@@ -48,11 +58,6 @@ const styles = StyleSheet.create({
   },
   imageContainer: {
     flex: 1,
-  },
-  image: {
-    width: 320,
-    height: 440,
-    borderRadius: 18,
   },
   footerContainer: {
     flex: 1 / 3,
