@@ -21,6 +21,13 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
     }
   });
 
+  const imageStyle = useAnimatedStyle(() => {
+    return {
+      width: withSpring(scaleImage.value),
+      height: withSpring(scaleImage.value),
+    };
+  });
+
   return (
     <View style={{ top: -350 }}>
       <Animated.Image 
