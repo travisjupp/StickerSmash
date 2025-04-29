@@ -9,6 +9,7 @@ type Props = {
 };
 
 export default function EmojiSticker({ imageSize, stickerSource }: Props) {
+  // RUN ANIMATIONS BASED ON CURRENT VALUE
   const scaleImage = useSharedValue(imageSize);
 
   const doubleTap = Gesture.Tap()
