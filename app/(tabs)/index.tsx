@@ -3,6 +3,7 @@ import * as ImagePicker from 'expo-image-picker';
 import { useState } from 'react';
 import { type ImageSource } from 'expo-image';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import * as MediaLibrary from 'expo-media-library';
 
 import Button from "@/components/Button";
 import ImageViewer from "@/components/ImageViewer";
@@ -15,6 +16,8 @@ import EmojiSticker from "@/components/EmojiSticker";
 const PlaceholderImage = require('@/assets/images/background-image.png');
 
 export default function Index() {
+  // MEDIA LIBRARY PERMISSIONS
+  const [status, requestPermission] = MediaLibrary.usePermissions();
   // STORE IMAGE URI
   const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
   // SHOW OR HIDE BUTTONS FOR MODAL
@@ -23,6 +26,11 @@ export default function Index() {
   const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
   // STORE EMOJI
   const [pickedEmoji, setPickedEmoji] = useState<ImageSource | undefined>(undefined);
+
+
+  if (status === null) {
+    requestPermission();
+  }
 
   // LAUNCH DEVICES IMG LIBRARY FUNC
   const pickImageAsync = async () => {
