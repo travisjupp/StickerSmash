@@ -39,6 +39,20 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
     translateY.value += event.changeY;
   });
 
+  // SET THE COMPONENTS TRANSFORM PROPERTY
+  const containerStyle = useAnimatedStyle(() => {
+    return {
+      transform: [
+        {
+          translateX: translateX.value,
+        },
+        {
+          translateY: translateY.value,
+        },
+      ],
+    };
+  });
+
   return (
     <Animated.View style={{ top: -350 }}>
       <GestureDetector gesture={doubleTap}>
