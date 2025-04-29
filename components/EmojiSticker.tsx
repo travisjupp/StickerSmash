@@ -14,6 +14,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
   const translateX = useSharedValue(0);
   const translateY = useSharedValue(0);
 
+  // HANDLE THE TAP GESTURE
   const doubleTap = Gesture.Tap()
   .numberOfTaps(2)
   .onStart(() => {
@@ -24,6 +25,7 @@ export default function EmojiSticker({ imageSize, stickerSource }: Props) {
     }
   });
 
+  // ANIMATE THE TRANSITION
   const imageStyle = useAnimatedStyle(() => {
     return {
       width: withSpring(scaleImage.value),
