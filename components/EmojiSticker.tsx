@@ -1,6 +1,7 @@
 import { View } from "react-native";
 import { Image, type ImageSource } from 'expo-image';
-import Animated from 'react-native-reanimated';
+import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
+import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 
 type Props = {
   imageSize: number;
@@ -8,6 +9,7 @@ type Props = {
 };
 
 export default function EmojiSticker({ imageSize, stickerSource }: Props) {
+  const scaleImage = useSharedValue(imageSize);
   return (
     <View style={{ top: -350 }}>
       <Animated.Image 
