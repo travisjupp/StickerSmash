@@ -1,5 +1,28 @@
 # NOTES
 
+
+## Viewing the Expo/EAS tutorial (git logs)
+
+View the Expo and EAS tutorial (git logs) in reverse order omitting a few
+unnecessary verbose commits:
+
+```sh
+git log --patch --reverse --pretty=format:'%C(bold blue)%h%C(reset) %C(bold yellow)%B%C(reset)' --grep='Initial commit' --grep='Install eslint' --grep='Update package files' --grep='tags file' --invert-grep
+```
+
+Only view the Expo tutorial:
+
+```sh
+git log --patch --reverse --pretty=format:"%C(bold blue)%h%C(reset) %C(bold yellow)%B%C(reset)" --grep='Initial commit' --grep='Install eslint' --grep='Update package files' --grep='tags file' --invert-grep --until 'Thu May 1 11:54:15 2025'
+```
+
+Only view the EAS tutorial:
+
+```sh
+git log --patch --reverse --pretty=format:'%C(bold blue)%h%C(reset) %C(bold yellow)%B%C(reset)' --grep='tags file' --grep='Update notes' --invert-grep --since 'Thu May 1 11:54:15 2025'
+```
+
+
 ## Semantic Versioning
 
 https://semver.org/
