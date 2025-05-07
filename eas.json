@@ -10,7 +10,9 @@
       "env": {
         "APP_VARIANT": "development"
       },
-      "channel": "development"
+      "channel": "development",
+      "android": "latest",
+      "ios": "latest"
     },
     "ios-simulator": {
       "extends": "development",
