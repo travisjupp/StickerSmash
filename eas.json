@@ -10,7 +10,6 @@
       "env": {
         "APP_VARIANT": "development"
       },
-<<<<<<< HEAD
       "channel": "development",
       "android": { 
         "image": "latest"
@@ -18,13 +17,6 @@
       "ios": {
         "image": "latest"
       }
-||||||| a32eadf
-      "channel": "development"
-=======
-      "channel": "development",
-      "android": "latest",
-      "ios": "latest"
->>>>>>> refs/remotes/origin/dev
     },
     "ios-simulator": {
       "extends": "development",
